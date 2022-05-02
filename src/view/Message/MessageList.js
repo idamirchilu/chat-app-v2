@@ -10,11 +10,12 @@ export default function MessageList() {
 
   useEffect(() => {
     socket.on("all-messages", (a) => {
+      a.messages.sort(
+        (a, b) => new Date(a.created_at) - new Date(b.created_at)
+      );
       dispatch(messageActions.fetchMessages(a.messages));
     });
   }, [dispatch]);
-
-  console.log(messageState.messages);
 
   return (
     <>

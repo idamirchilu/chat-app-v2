@@ -18,7 +18,7 @@ export default function MessageContainer({ message }) {
       marginLeft: "13rem",
     };
     styleCard = {
-      backgroundColor: "lightgrey",
+      backgroundColor: "rgb(119, 200, 119)",
     };
   }
 
