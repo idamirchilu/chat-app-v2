@@ -1,8 +1,10 @@
 import { Card, Dropdown } from "react-bootstrap";
 import classes from "./MessageContainer.module.css";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 export default function MessageContainer({ message }) {
+  const state = useSelector((state) => state.message);
   const copyMessageHandler = () => {
     const textField = document.createElement("textarea");
     textField.innerText = message.message;
@@ -13,7 +15,7 @@ export default function MessageContainer({ message }) {
   };
   let styleCard = {};
   let styleContainer = {};
-  if (message.username !== "hossein") {
+  if (message.username !== state.username) {
     styleContainer = {
       marginLeft: "13rem",
     };

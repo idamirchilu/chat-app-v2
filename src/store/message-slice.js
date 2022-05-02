@@ -2,14 +2,17 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const messageSlice = createSlice({
   name: "message",
-  initialState: { messages: [] },
+  initialState: { messages: [], username: "" },
   reducers: {
+    setUserName(state, { payload }) {
+      state.username = payload;
+    },
     fetchMessages(state, { payload }) {
       state.messages = payload;
     },
     sendMessage(state, { payload }) {
       const newMessage = state.messages.find(
-        (item) => item.username === "hossein"
+        (item) => item.username === state.username
       );
       newMessage.chat_messages_id = Math.random() + newMessage.chat_messages_id;
       newMessage.message = payload;

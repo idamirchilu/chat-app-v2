@@ -15,6 +15,9 @@ export default function MessageList() {
       );
       dispatch(messageActions.fetchMessages(a.messages));
     });
+    socket.on("system-information", (a) => {
+      dispatch(messageActions.setUserName(a.message.user.username));
+    });
   }, [dispatch]);
 
   return (
